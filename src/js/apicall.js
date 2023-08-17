@@ -1,6 +1,6 @@
 export class APICall {
   static async getRates() {
-    const API_KEY = xxxx;
+    const API_KEY = `${process.env.API_KEY}`;
     const url = `https://v6.exchangerate-api.com/v6/${API_KEY}/latest/USD`;
     try {
       const response = await fetch(url);
