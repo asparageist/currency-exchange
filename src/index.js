@@ -9,10 +9,12 @@ exchange.addEventListener('click', async () => {
   const USD = parseFloat(document.getElementById('USD').value);
   try {
     const exchangeRates = await APICall.getRates();
+    console.log(exchangeRates);
+
     const converted = calculateExchangeRate(USD, currencyType, exchangeRates);
     showResult(USD, converted, currencyType);
   } catch (error) {
-    console.Error('Error converting currency: ', error);
+    console.error('Error converting currency: ', error);
     showResult(USD, 'N/A', currencyType);
   }
 });
