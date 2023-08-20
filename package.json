@@ -1,7 +1,7 @@
 {
-  "name": "template",
+  "name": "currency-exchange",
   "version": "1.0.0",
-  "description": "a base from which to build",
+  "description": "an app calling an API to check the exchange rate of the USD to 5 other currencies",
   "main": "index.js",
   "scripts": {
     "build": "webpack --mode=development",

@@ -9,8 +9,6 @@ exchange.addEventListener('click', async () => {
   const USD = parseFloat(document.getElementById('USD').value);
   try {
     const exchangeRates = await APICall.getRates();
-    console.log(exchangeRates);
-
     const converted = calculateExchangeRate(USD, currencyType, exchangeRates);
     showResult(USD, converted, currencyType);
   } catch (error) {
@@ -22,6 +20,7 @@ exchange.addEventListener('click', async () => {
 function calculateExchangeRate(USD, currencyType, exchangeRates) {
   if (currencyType in exchangeRates) {
     const exchangeRate = exchangeRates[currencyType];
+    console.log(exchangeRate);
     const convertedAmount = USD * exchangeRate;
     return convertedAmount.toFixed(2);
   } else {
@@ -30,6 +29,6 @@ function calculateExchangeRate(USD, currencyType, exchangeRates) {
 }
 
 function showResult(USD, converted, currencyType) {
-  const displayResult = document.getElementById("insert");
-  displayResult.textContent = `${USD} converts to ${converted} ${currencyType}`;
+  const displayResult = document.getElementById("result");
+  displayResult.textContent = `$${USD} converts to ${converted} ${currencyType}`;
 }
