@@ -4,17 +4,27 @@ import './css/styles.css';
 import { APICall } from './js/apicall';
 
 const exchange = document.getElementById('exchange');
-exchange.addEventListener('click', () => {
-  const currencyType = document.getElementById('convert');
-  const USD = document.getElementById('USD').value;
-  console.log(currencyType, USD);
-  new APICall(currencyType, USD);
-  const converted = "ello";
-  exchangeRate();
-  showResult(USD, converted, currencyType);
+exchange.addEventListener('click', async () => {
+  const currencyType = document.getElementById('convert').value;
+  const USD = parseFloat(document.getElementById('USD').value);
+  try {
+    const exchangeRates = await APICall.getRates();
+    const converted = calculateExchangeRate(USD, currencyType, exchangeRates);
+    showResult(USD, converted, currencyType);
+  } catch (error) {
+    console.Error('Error converting currency: ', error);
+    showResult(USD, 'N/A', currencyType);
+  }
 });
 
-function exchangeRate() {
+function calculateExchangeRate(USD, currencyType, exchangeRates) {
+  if (currencyType in exchangeRates) {
+    const exchangeRate = exchangeRates[currencyType];
+    const convertedAmount = USD * exchangeRate;
+    return convertedAmount.toFixed(2);
+  } else {
+    throw new Error('Unable to find currency.');
+  }
 }
 
 function showResult(USD, converted, currencyType) {
