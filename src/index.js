@@ -12,7 +12,6 @@ exchange.addEventListener('click', async () => {
     const converted = calculateExchangeRate(USD, currencyType, exchangeRates);
     showResult(USD, converted, currencyType);
   } catch (error) {
-    console.error('Error converting currency: ', error);
     showResult(USD, 'N/A', currencyType);
   }
 });
@@ -20,15 +19,19 @@ exchange.addEventListener('click', async () => {
 function calculateExchangeRate(USD, currencyType, exchangeRates) {
   if (currencyType in exchangeRates) {
     const exchangeRate = exchangeRates[currencyType];
-    console.log(exchangeRate);
     const convertedAmount = USD * exchangeRate;
     return convertedAmount.toFixed(2);
   } else {
-    throw new Error('Unable to find currency.');
+    showError();
   }
 }
 
 function showResult(USD, converted, currencyType) {
   const displayResult = document.getElementById("result");
   displayResult.textContent = `$${USD} converts to ${converted} ${currencyType}`;
+}
+
+function showError() {
+  const displayResult = document.getElementById("result");
+  displayResult.textContent = 'Unable to find currency.';
 }

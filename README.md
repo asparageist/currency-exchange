@@ -30,10 +30,6 @@ This app takes a user's numeric value as USD and converts it into either Euro, C
 - - npm install
 - - npm start
 
-## Known Bugs
-
-- unable to properly implement returned API call data into functional application
-
 ## licensing info
 
 *Copyright (c) 8/19/2023 Joseph Murray

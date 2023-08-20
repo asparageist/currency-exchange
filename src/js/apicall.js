@@ -7,12 +7,12 @@ export class APICall {
       const currency = data.conversion_rates;
       
       if(currency) {
-        const euro = currency.EUR;
-        const russia = currency.RUB;
-        const canada = currency.CAD;
-        const egypt = currency.EGP;
-        const yen = currency.JPY;
-        return {euro, russia, canada, egypt, yen};
+        const EUR = currency.EUR;
+        const RUB = currency.RUB;
+        const CAD = currency.CAD;
+        const EGP = currency.EGP;
+        const JPY = currency.JPY;
+        return {EUR, RUB, CAD, EGP, JPY};
       } else {
         return null;
       }
