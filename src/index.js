@@ -12,7 +12,7 @@ exchange.addEventListener('click', async () => {
     const converted = calculateExchangeRate(USD, currencyType, exchangeRates);
     showResult(USD, converted, currencyType);
   } catch (error) {
-    showResult(USD, 'N/A', currencyType);
+    showError();
   }
 });
 
@@ -33,5 +33,5 @@ function showResult(USD, converted, currencyType) {
 
 function showError() {
   const displayResult = document.getElementById("result");
-  displayResult.textContent = 'Unable to find currency.';
+  displayResult.textContent = 'Sorry. Unable to properly convert currency.';
 }
