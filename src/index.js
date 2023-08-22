@@ -28,7 +28,11 @@ function calculateExchangeRate(USD, currencyType, exchangeRates) {
 
 function showResult(USD, converted, currencyType) {
   const displayResult = document.getElementById("result");
-  displayResult.textContent = `$${USD} converts to ${converted} ${currencyType}`;
+  if (!isNaN(USD)) {
+    displayResult.textContent = `$${USD} converts to ${converted} ${currencyType}`;
+  } else {
+    showError();
+  }
 }
 
 function showError() {
